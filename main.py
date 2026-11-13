@@ -70,30 +70,31 @@ class FridayApp(ctk.CTk):
         self.api_key = self.config_data.get("api_key", "")
         self.history = []
         self.busy = False
-        self.tts_engine = None
+
+
+      self.tts_engine = None
 
         if pyttsx3:
             try:
-               engine = pyttsx3.init()
+                self.tts_engine = pyttsx3.init()
 
-voices = engine.getProperty("voices")
+                voices = self.tts_engine.getProperty("voices")
 
-female_voice = None
+                female_voice = None
 
-for voice in voices:
-    voice_name = voice.name.lower()
+                for voice in voices:
+                    voice_name = voice.name.lower()
 
-    if any(name in voice_name for name in ["zira", "female", "aria", "jenny"]):
-        female_voice = voice.id
-        break
+                    if any(name in voice_name for name in ["zira", "female", "aria", "jenny", "hazel"]):
+                        female_voice = voice.id
+                        break
 
-if female_voice:
-    engine.setProperty("voice", female_voice)
+                if female_voice:
+                    self.tts_engine.setProperty("voice", female_voice)
 
-engine.setProperty("rate", 175)
-engine.setProperty("volume", 1.0)
                 self.tts_engine.setProperty("rate", 175)
                 self.tts_engine.setProperty("volume", 0.9)
+
             except Exception:
                 self.tts_engine = None
 
