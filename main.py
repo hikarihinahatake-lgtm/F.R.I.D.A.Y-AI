@@ -72,12 +72,11 @@ class FridayApp(ctk.CTk):
         self.busy = False
 
 
-      self.tts_engine = None
+        self.tts_engine = None
 
         if pyttsx3:
             try:
                 self.tts_engine = pyttsx3.init()
-
                 voices = self.tts_engine.getProperty("voices")
 
                 female_voice = None
@@ -97,6 +96,7 @@ class FridayApp(ctk.CTk):
 
             except Exception:
                 self.tts_engine = None
+
 
         self.build_interface()
         self.refresh_system_stats()
