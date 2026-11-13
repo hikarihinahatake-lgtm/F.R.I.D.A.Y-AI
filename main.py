@@ -74,7 +74,24 @@ class FridayApp(ctk.CTk):
 
         if pyttsx3:
             try:
-                self.tts_engine = pyttsx3.init()
+               engine = pyttsx3.init()
+
+voices = engine.getProperty("voices")
+
+female_voice = None
+
+for voice in voices:
+    voice_name = voice.name.lower()
+
+    if any(name in voice_name for name in ["zira", "female", "aria", "jenny"]):
+        female_voice = voice.id
+        break
+
+if female_voice:
+    engine.setProperty("voice", female_voice)
+
+engine.setProperty("rate", 175)
+engine.setProperty("volume", 1.0)
                 self.tts_engine.setProperty("rate", 175)
                 self.tts_engine.setProperty("volume", 0.9)
             except Exception:
