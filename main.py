@@ -23,7 +23,7 @@ except ImportError:
 
 
 APP_NAME = "F.R.I.D.A.Y."
-MODEL = openai/gpt-oss-120b
+MODEL = "openai/gpt-oss-120b"
 
 APP_DIR = Path(os.getenv("APPDATA", str(Path.home()))) / "FridayAI"
 CONFIG_FILE = APP_DIR / "config.json"
