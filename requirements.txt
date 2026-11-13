@@ -1,0 +1,10 @@
+
+customtkinter
+groq
+psutil
+pyttsx3
+SpeechRecognition
+sounddevice
+scipy
+pyinstaller
+python-dotenv
